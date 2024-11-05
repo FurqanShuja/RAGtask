@@ -1,6 +1,6 @@
 # Retrieval-Augmented Generation (RAG) Q&A System
 
-A Q&A system using Retrieval-Augmented Generation (RAG) to answer questions based on the content of a provided document. The system combines document retrieval with a Large Language Model (LLM) to generate detailed responses.
+A Q&A system using Retrieval-Augmented Generation (RAG) to answer questions based on the content of a provided document. The system combines document retrieval with a Large Language Model (LLM) from Google Gemini API to generate detailed responses.
 
 ---
 
