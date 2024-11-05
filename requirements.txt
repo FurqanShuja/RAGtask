@@ -1,0 +1,7 @@
+python-dotenv
+google-generativeai
+langchain
+PyMuPDF
+sentence-transformers
+transformers
+faiss-cpu
