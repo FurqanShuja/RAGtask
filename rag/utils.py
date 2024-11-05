@@ -11,13 +11,6 @@ def generate_prompt_with_exemplars(context, question, exemplars):
     """
     Generate a prompt string that includes exemplars for few-shot prompting.
 
-    Args:
-        context (str): The retrieved context from the document.
-        question (str): The user's question.
-        exemplars (list): List of exemplar dictionaries.
-
-    Returns:
-        str: The formatted prompt.
     """
     exemplar_text = ""
     for ex in exemplars:
@@ -31,7 +24,7 @@ def generate_prompt_with_exemplars(context, question, exemplars):
 
             {exemplar_text}
 
-            Now, answer the following question with a detailed reasoning process.
+            Now, answer the following question with a detailed reasoning process within the scope of context provided.
 
             Context:
             {context}

@@ -12,9 +12,7 @@ def main():
     load_dotenv()
     
     # Load the document using PyMuPDF
-    file_path = "doc.pdf"  # Ensure this path is correct
-    if not os.path.exists(file_path):
-        raise FileNotFoundError(f"The file {file_path} does not exist.")
+    file_path = "doc.pdf"  
     
     documents = load_pdf_by_sections(file_path)
     
@@ -46,7 +44,7 @@ def main():
         # Display the Answer Generation Step
         print("\n--- Answer Generation ---")
         print(answer)
-        print("\n" + "-"*50 + "\n")  # Separator for readability
+        print("\n" + "-"*50 + "\n") 
 
 if __name__ == "__main__":
     main()

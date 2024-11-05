@@ -7,8 +7,6 @@ from typing import Optional, List
 # Load environment variables and configure Gemini API
 load_dotenv()
 gemini_key = os.getenv("GEMINI_API_KEY")
-if not gemini_key:
-    raise ValueError("Gemini API key is missing. Please check your .env file.")
 
 genai.configure(api_key=gemini_key)
 gemini_model = genai.GenerativeModel('gemini-1.5-flash-001')

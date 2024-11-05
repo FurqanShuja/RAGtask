@@ -1,4 +1,4 @@
-import fitz  # PyMuPDF
+import fitz  
 from langchain.schema import Document
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain_huggingface import HuggingFaceEmbeddings
@@ -11,11 +11,6 @@ def load_pdf_by_sections(file_path):
     """
     Load and extract text from a PDF file, splitting it into sections based on the table of contents.
 
-    Args:
-        file_path (str): The path to the PDF file.
-
-    Returns:
-        list of Document: Extracted text from the PDF split into sections with metadata.
     """
     doc = fitz.open(file_path)
     toc = doc.get_toc(simple=True)  # Get the table of contents in a simple format
@@ -24,7 +19,7 @@ def load_pdf_by_sections(file_path):
     if toc:
         for i, entry in enumerate(toc):
             level, title, page_num = entry
-            start_page = page_num - 1  # zero-based index
+            start_page = page_num - 1  
             end_page = toc[i + 1][2] - 1 if i + 1 < len(toc) else doc.page_count
             text = ""
             for page in doc[start_page:end_page]:
@@ -43,23 +38,18 @@ def setup_retriever(documents):
     """
     Setup the FAISS retriever with the provided documents.
 
-    Args:
-        documents (list of Document): The documents to index.
-
-    Returns:
-        tuple: (retriever, knowledge_base)
     """
-    # Replace CharacterTextSplitter with RecursiveCharacterTextSplitter
+    # For text splitting
     text_splitter = RecursiveCharacterTextSplitter(
-        chunk_size=500,      # Increased chunk size for more context
-        chunk_overlap=100,   # Reduced overlap to minimize redundancy
+        chunk_size=500,      
+        chunk_overlap=100,   
         separators=["\n\n", "\n", " ", ""]  # Prioritize splitting by paragraphs
     )
     
     text_chunks = text_splitter.split_documents(documents)
     
-    # Load the HuggingFace Embeddings model with an explicit model name
-    embeddings = HuggingFaceEmbeddings(model_name="sentence-transformers/all-MiniLM-L6-v2")  # Specify model_name
+    # Load the HuggingFace Embeddings model with a model name
+    embeddings = HuggingFaceEmbeddings(model_name="sentence-transformers/all-MiniLM-L6-v2") 
     
     # Vector embedding for text chunks using FAISS
     knowledge_base = FAISS.from_documents(text_chunks, embeddings)

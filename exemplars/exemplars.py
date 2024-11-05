@@ -35,5 +35,4 @@ EXEMPLARS = [
             "Climate change involves significant changes in global temperatures and weather patterns over time. The primary causes include the emission of greenhouse gases like carbon dioxide and methane, deforestation, and industrial processes. Climate change affects rising sea levels, increased frequency of extreme weather events, and disruptions to agriculture."
         )
     }
-    # Add more exemplars following the same structure
 ]
